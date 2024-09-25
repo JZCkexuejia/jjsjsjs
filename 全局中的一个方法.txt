@@ -873,7 +873,13 @@ Function ComExcel(savePath As String,excelFilewithPath As String)
 			excelNew.CellValue(sheetName,1,8)= "JUST"  
 		End If 
  
- 
+ If Not datatableInterferenceCheck.Columns.Contains("*_MIN") Then  
+datatableInterferenceCheck.Columns.Add("*_MIN", GetType(Integer))  
+End If 
+
+If Not datatableInterferenceCheck.Columns.Contains("*_MAX") Then  
+datatableInterferenceCheck.Columns.Add("_MAX", GetType(Integer))  
+End If 
  
 		excelNew.SavetoFile(savePath & excelName, True)  
  
